@@ -1,0 +1,16 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    uses: joaoalberto-dev/vps-infra/.github/workflows/deploy-dokku.yml@main
+    permissions:
+      contents: read
+      packages: write
+    with:
+      app: minha-api # mesmo "name" usado no apps.yml do vps-infra
+    secrets: inherit
